@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Task2\Task2a.cpp" />
+    <ClCompile Include="..\Task2a\Task2a.cpp" />
     <ClCompile Include="manualTesting.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

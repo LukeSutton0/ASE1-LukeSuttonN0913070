@@ -1,8 +1,6 @@
-#include <iostream>
-#include <unordered_map>
-#include <string>
-
-void task2a() {
+#include "mainHeader.h"
+  
+void lukeAlgo::task2a() {
     std::unordered_map<std::string, std::string> bricks;
 
     // northern = southern
@@ -11,7 +9,7 @@ void task2a() {
     bricks["diamond"] = "octagon";
     bricks["square"] = "rectangle";
     bricks["rectangle"] = "diamond";
-    
+
     std::string startBrick = "square";
     std::string nextBrick = bricks[startBrick];
     std::string result = bricks[startBrick];  //shows result of searching
@@ -22,7 +20,7 @@ void task2a() {
         for (const auto& brick : bricks) {  //pass value by reference, const because cant change brick values
             //same as for(int i = 0; i< bricks.size() ; i++)
             if (brick.first == nextBrick) {
-                result += bricks[nextBrick]yb ;
+                result += bricks[nextBrick];
                 nextBrick = brick.second;
                 lastAdded = brick.first;
                 break;

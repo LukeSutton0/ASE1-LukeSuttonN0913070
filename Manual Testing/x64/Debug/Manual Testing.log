@@ -1,6 +1,4 @@
 ﻿  Task2a.cpp
-c1xx : fatal  error C1083: Cannot open source file: '..\Task2\Task2a.cpp': No such file or directory
   manualTesting.cpp
-C:\Users\xbox3\source\repos\ASE1-LukeSuttonN0913070\Task2a\Task2a.cpp(25,44): error C2146: syntax error: missing ';' before identifier 'yb'
-C:\Users\xbox3\source\repos\ASE1-LukeSuttonN0913070\Task2a\Task2a.cpp(25,44): error C2065: 'yb': undeclared identifier
   Generating Code...
+  Manual Testing.vcxproj -> C:\Users\xbox3\source\repos\ASE1-LukeSuttonN0913070\x64\Debug\Manual Testing.exe

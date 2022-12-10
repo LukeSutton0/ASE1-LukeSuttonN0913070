@@ -18,7 +18,7 @@
     <ClCompile Include="manualTesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Task2\Task2a.cpp">
+    <ClCompile Include="..\Task2a\Task2a.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

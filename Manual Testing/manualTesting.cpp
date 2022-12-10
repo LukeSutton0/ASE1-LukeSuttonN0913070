@@ -1,8 +1,9 @@
-#include "../Task2a/Task2a.cpp"
-#include "../Task2b/Task2b.cpp"
+#include "../Task2a/mainHeader.h"
+
 
 
 
 int main() {
-	task2a();
+	lukeAlgo testing;
+	testing.task2a();
 }
