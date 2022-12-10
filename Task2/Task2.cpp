@@ -25,12 +25,12 @@ int main() {
     while (true) {
         // Search for the brick with a northern symbol that matches
         // the back (easternmost) symbol in the result sequence.
-        for (const auto& brick : bricks) {  //pass value by reference const cause cant change brick values
-            //std::cout << brick.first <<"\n";
-            if (brick.second == starting_symbol) {
+        for (const auto& brick : bricks) {  //pass value by reference, const because cant change brick values
+            std::cout << brick.first <<"\n";
+            /*if (brick.second == starting_symbol) {
                 next_symbol = brick.first;
                 break;
-            }
+            }*/
         }
 
         // If we didn't find a matching brick, we're done.
