@@ -1,6 +1,7 @@
-#include "mainHeader.h"
-  
-void lukeAlgo::task2a() {
+#include "../Task2a/mainHeader.h"
+#include <unordered_map>
+
+void Task2Algo::task2a() {
     std::unordered_map<std::string, std::string> bricks;
 
     // northern = southern

@@ -5,7 +5,27 @@
       "ProjectGuid": "fb11909b-722d-4b80-9b47-91fcf045664a",
       "DisplayName": "Task2",
       "ColorIndex": 0
+    },
+    "5a1499e8-5428-41aa-81d7-a5bfa8cb90a3": {
+      "ProjectGuid": "5a1499e8-5428-41aa-81d7-a5bfa8cb90a3",
+      "DisplayName": "Manual Testing",
+      "ColorIndex": 1
+    },
+    "e0297806-eb26-4ca1-b2fe-f854cb40083a": {
+      "ProjectGuid": "e0297806-eb26-4ca1-b2fe-f854cb40083a",
+      "DisplayName": "Task2a",
+      "ColorIndex": 2
+    },
+    "054b50f3-869b-4568-b940-07f70f095763": {
+      "ProjectGuid": "054b50f3-869b-4568-b940-07f70f095763",
+      "DisplayName": "Task2b",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 4
 }

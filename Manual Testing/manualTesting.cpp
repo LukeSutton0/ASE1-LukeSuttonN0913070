@@ -4,6 +4,7 @@
 
 
 int main() {
-	lukeAlgo testing;
-	testing.task2a();
+	Task2Algo testing;
+	//testing.task2a();
+	testing.task2b();
 }
