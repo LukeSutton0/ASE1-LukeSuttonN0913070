@@ -39,7 +39,7 @@ void Task2Algo::task2b() {
     bool finishedNorth = false;
     bool finishedSouth = false;
     std::string nextBrick = startBrick;
-    std::string lastAdded = "";
+    std::string lastBrick = "";
 
     while (!finishedSouth) {
         if (mapForSearching.find(nextBrick) != mapForSearching.end()) {
@@ -51,19 +51,20 @@ void Task2Algo::task2b() {
         }
     }
     nextBrick = startBrick;
+    result = nextBrick + result;
 
     while (!finishedNorth) {
         for (const auto& mapIter: mapForSearching) {
-            if (mapIter->first == nextBrick) {
-
+            if (mapIter.second == nextBrick) {
+                result = mapIter.first + result;
+                nextBrick = mapIter.first;
+                break;
             }
+            lastBrick = nextBrick;
+
         }
-        if (mapForSearching.find(nextBrick) != mapForSearching.end()) {
-            result += mapForSearching[nextBrick];
-            nextBrick = mapForSearching[nextBrick]; //[startbrick] = brick.second
-        }
-        else {
-            finishedSouth = true;
+        if (nextBrick == lastBrick){
+            finishedNorth = true;
         }
     }
 
