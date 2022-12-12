@@ -1,7 +1,7 @@
-#include "../Task2a/mainHeader.h"
+#include "../headers/Task2.h"
 #include <unordered_map>
 
-void Task2Algo::task2a() {
+void task2a() {
     std::unordered_map<std::string, std::string> bricks;
 
     // northern = southern
@@ -50,4 +50,7 @@ void Task2Algo::task2a() {
     }
     // Output the result
     std::cout << result << std::endl;
+}
+
+int main(int argc, char* argv[]) {
 }

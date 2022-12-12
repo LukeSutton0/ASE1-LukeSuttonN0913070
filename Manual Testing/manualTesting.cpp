@@ -1,10 +1,10 @@
-#include "../Task2a/mainHeader.h"
+#include "../headers/Task2.h"
 
 
 
 
 int main() {
-	Task2Algo testing;
+	//Task2 testing;
 	//testing.task2a();
-	testing.task2b();
+	//testing.task2b();
 }
