@@ -6,8 +6,8 @@
 //circle star square rectangle diamond octagon
 
 
-int task2b(std::string filepath) {
-    std::ifstream testFile {filepath};
+int task2b(std::string filePath) {
+    std::ifstream testFile {filePath};
     std::string line;
     std::list<std::string> bricks;
 
@@ -43,7 +43,7 @@ int task2b(std::string filepath) {
         }
         ++countingListEntries;
     }
-    std::string result;
+    std::list<std::string> result;
     bool finishedNorth = false;
     bool finishedSouth = false;
     std::string nextBrick = startBrick;
@@ -51,7 +51,8 @@ int task2b(std::string filepath) {
     
     while (!finishedSouth) {
         if (mapForSearching.find(nextBrick) != mapForSearching.end()) {
-            result = result + "," + mapForSearching[nextBrick];
+            //result = result + "," + mapForSearching[nextBrick];
+            result.push_back("\n" + mapForSearching[nextBrick]);
             nextBrick = mapForSearching[nextBrick]; //[startbrick] = brick.second
         }
         else {
@@ -59,30 +60,32 @@ int task2b(std::string filepath) {
         }
     }
     nextBrick = startBrick;
-    result = nextBrick + result;
+    //result = nextBrick + result;
+    result.push_front(nextBrick);
     while (!finishedNorth) {
-        for (const auto& mapIter: mapForSearching) {
-            if (mapIter.second == nextBrick) {
-                result = mapIter.first + "," + result;
-                nextBrick = mapIter.first;
-                break;
-            }
-            lastBrick = nextBrick;
-
-        }
-        if (nextBrick == lastBrick){
+        if (mapForSearching.find(nextBrick) != mapForSearching.end() && mapForSearching.find(nextBrick)->second == nextBrick) { //tried using string but took ages to push front
+            result.push_front(nextBrick + "\n");
+            nextBrick = mapForSearching[nextBrick];
+        }        
+        else {
             finishedNorth = true;
         }
     }
-    std::stringstream stream(result);
-    std::string resultString;
-    while (std::getline(stream, resultString, ',')) {
-        std::cout << resultString <<"\n";
+    for (const auto& resultIter : result) {
+        std::cout << resultIter;
     }
+    /*std::stringstream stream(result);
+    std::string resultString;
+    /*while (std::getline(stream, resultString, ',')) {
+        std::cout << resultString <<"\n";
+    }*/
+
+    return 0;
 }
 
-
 int main(int argc, char* argv[]) {
+    std::string filePath = "input-pairs-3M.txt";
+    task2b(filePath);
     if (argc != 1) { //make sure filepath entered
         try {
             std::string filePath = argv[1];
