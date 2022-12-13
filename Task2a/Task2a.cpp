@@ -1,14 +1,35 @@
+#include "..\headers\Task2.h"
 #include "../headers/Task2.h"
 #include <unordered_map>
 
-int task2a(std::string filePath) {
+
+int main(int argc, char* argv[]) {
+    std::string filePath = checkIfInput(argc,argv);
+    //std::string filePath = "input-pairs-3M.txt"; //if you want to use debug
+    if (filePath == "Error invalid File") {
+        return 1;
+    }
     std::unordered_map<std::string, std::string> bricks;
     std::unordered_map<std::string, std::string> bricksBack; //making a 2nd map copy is faster than iterating through 1
+    std::unordered_map<std::string, std::string> result; //create map for results
+    bool fileOpen = fileToUnMap(filePath, bricks, bricksBack);
+    if (fileOpen == false) {
+        return 1;
+    }
+    std::string startBrick = bricks.begin()->first; //can just start with the first one in the map
+    std::string lastAdded; //tracks last added brick into results
+    twoASouth(startBrick, bricks, result);
+    lastAdded = twoANorth(startBrick, bricksBack, result);
+    outputResult(bricks, lastAdded);
+    return 0;
+}
+
+int fileToUnMap(std::string &filePath, std::unordered_map<std::string, std::string> &bricks, std::unordered_map<std::string, std::string>&bricksBack) {
     std::ifstream testFile{ filePath };
     std::string line;
     if (!testFile.is_open()) { //if not open
         std::cerr << "File not open" << "\n"; //output char error
-        return 1;
+        return false;
     }
     while (std::getline(testFile, line)) {
         std::string delimiter = ","; //split string
@@ -17,17 +38,16 @@ int task2a(std::string filePath) {
         bricks[firstString] = secondString;
         bricksBack[secondString] = firstString;  //allows us to use find on values by making another map
     }
-    std::string startBrick = bricks.begin()->first; //can just start with the first one in the map
+    return true;
+}
+void twoASouth(std::string startBrick, std::unordered_map<std::string, std::string>& bricks, std::unordered_map<std::string, std::string>&result) {
     std::string nextBrick = bricks[startBrick];
-    std::unordered_map<std::string,std::string> result; //create map for results
-    bool finishedNorth = false;
+    result[startBrick] = nextBrick;
     bool finishedSouth = false;
     std::string lastAdded = "";
-    result[startBrick] = nextBrick;
-
     while (!finishedSouth) { //check all south of start brick
-        if (bricks.find(nextBrick) != bricks.end() && bricks.find(nextBrick)->first == nextBrick){
-            result[nextBrick] = bricks[nextBrick]; 
+        if (bricks.find(nextBrick) != bricks.end() && bricks.find(nextBrick)->first == nextBrick) {
+            result[nextBrick] = bricks[nextBrick];
             lastAdded = nextBrick;
             nextBrick = bricks[nextBrick];
         }
@@ -35,7 +55,11 @@ int task2a(std::string filePath) {
             finishedSouth = true;
         }
     }
-    nextBrick = bricksBack.find(startBrick)->second; //reset next brick to be back at start point
+}
+std::string twoANorth(std::string startBrick, std::unordered_map<std::string, std::string>& bricksBack, std::unordered_map<std::string, std::string>& result) {
+    std::string nextBrick = bricksBack.find(startBrick)->second; 
+    bool finishedNorth = false;
+    std::string lastAdded = "";
     while (!finishedNorth) {        //check north of start brick
         lastAdded = nextBrick;
         if (bricksBack.find(nextBrick) != bricksBack.end() && bricksBack.find(nextBrick)->first == nextBrick) {
@@ -46,26 +70,27 @@ int task2a(std::string filePath) {
             finishedNorth = true;
         }
     }
+    return lastAdded;
+}
+void outputResult(std::unordered_map<std::string, std::string>& bricks, std::string lastAdded) {
     std::unordered_map<std::string, std::string>::iterator resultIter = bricks.find(lastAdded);
     for (auto resultIter : bricks) {
         std::cout << lastAdded << "\n"; //check line endings for linux
         lastAdded = bricks[lastAdded];
     }
-    return 0;
 }
-
-int main(int argc, char* argv[]) {
-    /*std::string filePath = "input-pairs-500K.txt"; //if you want to use debug
-    task2a(filePath);*/
-    if (argc != 1) { //make sure filepath entered
-        try {
+std::string checkIfInput(int argc,char* argv[]) {
+    try {
+        if (argc != 1) { //make sure filepath entered
             std::string filePath = argv[1];
-            task2a(filePath);
-        }
-        catch (...) {
-            std::cerr << "Error establishing filepath";
+            return filePath;
         }
     }
+    catch (...) {
+        std::cerr << "Error establishing filepath";
+    }
+    return "Error invalid File";
+    
 }
 
 //code graveyard
