@@ -4,8 +4,8 @@
 
 
 int main(int argc, char* argv[]) {
-    //std::string filePath = checkIfInput(argc,argv);
-    std::string filePath = "input-pairs-50.txt"; //if you want to use debug
+    std::string filePath = checkIfInput(argc,argv);
+    //std::string filePath = "input-pairs-3M.txt"; //if you want to use debug
     if (filePath == "Error invalid File") {
         return 1;
     }
@@ -23,10 +23,6 @@ int main(int argc, char* argv[]) {
     outputResult(bricks, lastAdded);
     return 0;
 }
-
-
-
-
 
 int fileToUnMap(std::string &filePath, std::unordered_map<std::string, std::string> &bricks, std::unordered_map<std::string, std::string>&bricksBack) {
     std::ifstream testFile{ filePath };

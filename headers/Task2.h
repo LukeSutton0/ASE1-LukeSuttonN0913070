@@ -23,8 +23,8 @@ void outputResult(std::unordered_map<std::string, std::string>& bricks, std::str
 
 //2b
 std::string fileToList(std::string& filePath, std::list<std::string>& bricks);
-void listToOMap(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearching);
-void twoBSouth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearching, std::list<std::string>& result, std::string nextBrick);
-void twoBNorth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearching, std::list<std::string>& result, std::string nextBrick, std::string lastBrick);
+void listToOMap(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string >& mapForSearchingNorth);
+void twoBSouth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::list<std::string>& result, std::string nextBrick);
+void twoBNorth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingNorth, std::list<std::string>& result, std::string nextBrick, std::string lastBrick);
 
 #endif
