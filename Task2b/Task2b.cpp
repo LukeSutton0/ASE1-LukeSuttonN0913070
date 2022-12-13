@@ -3,8 +3,6 @@
 #include <map>
 #include <sstream>
 
-//circle star square rectangle diamond octagon
-
 
 int task2b(std::string filePath) {
     std::ifstream testFile {filePath};
@@ -51,7 +49,6 @@ int task2b(std::string filePath) {
     
     while (!finishedSouth) {
         if (mapForSearching.find(nextBrick) != mapForSearching.end()) {
-            //result = result + "," + mapForSearching[nextBrick];
             result.push_back("\n" + mapForSearching[nextBrick]);
             nextBrick = mapForSearching[nextBrick]; //[startbrick] = brick.second
         }
@@ -60,7 +57,6 @@ int task2b(std::string filePath) {
         }
     }
     nextBrick = startBrick;
-    //result = nextBrick + result;
     result.push_front(nextBrick);
     while (!finishedNorth) {
         if (mapForSearching.find(nextBrick) != mapForSearching.end() && mapForSearching.find(nextBrick)->second == nextBrick) { //tried using string but took ages to push front
@@ -84,8 +80,8 @@ int task2b(std::string filePath) {
 }
 
 int main(int argc, char* argv[]) {
-    std::string filePath = "input-pairs-3M.txt";
-    task2b(filePath);
+    /*std::string filePath = "input-pairs-3M.txt";
+    task2b(filePath);*/
     if (argc != 1) { //make sure filepath entered
         try {
             std::string filePath = argv[1];
@@ -95,5 +91,12 @@ int main(int argc, char* argv[]) {
             std::cerr << "Error establishing filepath";
         }
     }
-    //task2b("input-pairs-1K.txt");ab
+    //task2b("input-pairs-1K.txt");
 }
+
+
+//code graveyard
+//circle star square rectangle diamond octagon
+    //task2b("input-pairs-1K.txt");
+    //result = nextBrick + result;
+            //result = result + "," + mapForSearching[nextBrick];
