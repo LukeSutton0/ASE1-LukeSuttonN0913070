@@ -1,2 +1,3 @@
-﻿MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\xbox3\source\repos\ASE1-LukeSuttonN0913070\x64\Debug\Task2b.exe : fatal error LNK1120: 1 unresolved externals
+﻿  Task2b.cpp
+C:\Users\xbox3\source\repos\ASE1-LukeSuttonN0913070\Task2b\Task2b.cpp(83): warning C4715: 'task2b': not all control paths return a value
+  Task2b.vcxproj -> C:\Users\xbox3\source\repos\ASE1-LukeSuttonN0913070\x64\Debug\Task2b.exe
