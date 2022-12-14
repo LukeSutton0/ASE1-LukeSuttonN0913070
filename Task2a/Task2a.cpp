@@ -4,7 +4,6 @@
 
 int main(int argc, char* argv[]) {
     std::string filePath = checkIfInput(argc,argv);
-    //std::string filePath = "input-pairs-3M.txt"; //if you want to use debug
     if (filePath == "Error invalid File") {
         return 1;
     }
@@ -73,7 +72,7 @@ std::string twoANorth(std::string startBrick, std::unordered_map<std::string, st
 }
 void outputResult(std::unordered_map<std::string, std::string>& bricks, std::string lastAdded) {
     std::unordered_map<std::string, std::string>::iterator resultIter = bricks.find(lastAdded);
-    for (auto resultIter : bricks) {
+    for (auto &resultIter : bricks) {
         std::cout << lastAdded << "\n"; //check line endings for linux
         lastAdded = bricks[lastAdded];
     }
