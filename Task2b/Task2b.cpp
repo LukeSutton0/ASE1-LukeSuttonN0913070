@@ -6,10 +6,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     std::list<std::string> bricks;
-    std::string startBrick = fileToList(filePath, bricks);
-    if (startBrick == "Error") {
-        return 1;
-    }
+    fileToList(filePath, bricks);
+    std::string startBrick = bricks.front();
     std::map<std::string, std::string> mapForSearchingSouth;
     std::map<std::string, std::string> mapForSearchingNorth;
     listToOMap(bricks,mapForSearchingSouth,mapForSearchingNorth);
@@ -26,26 +24,22 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-std::string fileToList(std::string& filePath, std::list<std::string>& bricks) {
+void fileToList(std::string& filePath, std::list<std::string>& bricks) {
     std::ifstream testFile{ filePath };
     std::string line;
     if (!testFile.is_open()) { //if not open
         std::cerr << "File not open" << "\n"; //output char error
-        return "Error";
     }
-    while (std::getline(testFile, line)) {
-        //split string
-        std::string delimiter = ",";
-        std::string firstString = line.substr(0, line.find(delimiter));
-        std::string secondString = line.substr(line.find(delimiter) + 1, line.back());
-        bricks.push_back(firstString);
-        bricks.push_back(secondString);
+    else {
+        while (std::getline(testFile, line)) {
+            //split string
+            std::string delimiter = ",";
+            std::string firstString = line.substr(0, line.find(delimiter));
+            std::string secondString = line.substr(line.find(delimiter) + 1, line.back());
+            bricks.push_back(firstString);
+            bricks.push_back(secondString);
+        }
     }
-    testFile.clear(); //make getline back to start so it can read lines again
-    testFile.seekg(0, testFile.beg);
-    std::string startBrick;
-    std::getline(testFile, startBrick, ','); //get string from line 1 / can change to whatever if need
-    return startBrick;
 }
 void listToOMap(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string > & mapForSearchingNorth) {
     int countingListEntries = 0;
@@ -112,3 +106,6 @@ std::string checkIfInput(int argc, char* argv[]) {
 //    while (std::getline(stream, resultString, ',')) {
 //        std::cout << resultString <<"\n";
 //    }
+    //testFile.clear(); //make getline back to start so it can read lines again
+//testFile.seekg(0, testFile.beg);
+    //std::getline(testFile, startBrick, ','); //get string from line 1 / can change to whatever if need
