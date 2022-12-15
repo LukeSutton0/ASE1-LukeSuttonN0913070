@@ -8,7 +8,7 @@
 #include <list>
 #include <map>
 #include <sstream>
-
+#include <chrono>
 
 //declare all function definitions
 
@@ -22,10 +22,16 @@ void twoASouth(std::string startBrick, std::unordered_map<std::string, std::stri
 std::string twoANorth(std::string startBrick, std::unordered_map<std::string, std::string>& bricksBack, std::unordered_map<std::string, std::string>& result);
 void outputResult(std::unordered_map<std::string, std::string>& bricks, std::string lastAdded);
 
-
 //2b
+void fileToList(std::string& filePath, std::list<std::string>& bricks);
+void listToOMap(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string >& mapForSearchingNorth);
+void twoBSouth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::list<std::string>& result, std::string nextBrick);
+void twoBNorth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingNorth, std::list<std::string>& result, std::string nextBrick, std::string lastBrick);
+void outputResult(std::list<std::string> result);
+
+//2b Attempt 2
 std::string fileToMap(std::string& filePath, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string >& mapForSearchingNorth);
 void twoBSouth(std::map<std::string, std::string>& mapForSearchingSouth, std::list<std::string>& result, std::string nextBrick);
-void twoBNorth(std::map<std::string, std::string>&mapForSearchingNorth, std::list<std::string>&result, std::string nextBrick);
+void twoBNorth(std::map<std::string, std::string>& mapForSearchingNorth, std::list<std::string>& result, std::string nextBrick);
 void outputResult(std::list<std::string> result);
 #endif
