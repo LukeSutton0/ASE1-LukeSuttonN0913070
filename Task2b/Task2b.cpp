@@ -1,62 +1,45 @@
 #include "../headers/Task2.h"
 int main(int argc, char* argv[]) {   
     std::string filePath = checkIfInput(argc, argv);
-    //std::string filePath = "input-pairs-3M.txt";
     if (filePath == "Error invalid File") {
         return 1;
     }
-    std::list<std::string> bricks;
-    fileToList(filePath, bricks);
-    std::string startBrick = bricks.front();
     std::map<std::string, std::string> mapForSearchingSouth;
     std::map<std::string, std::string> mapForSearchingNorth;
-    listToOMap(bricks,mapForSearchingSouth,mapForSearchingNorth);
+    std::string startBrick = fileToMap(filePath, mapForSearchingSouth,mapForSearchingNorth);
     std::list<std::string> result;
     std::string nextBrick = startBrick;
     result.push_back(nextBrick);
-    twoBSouth(bricks,mapForSearchingSouth,result,nextBrick);
-    std::string lastBrick = "";
-    twoBNorth(bricks, mapForSearchingNorth, result, nextBrick, lastBrick);
-    
-    for (const auto& resultIter : result) {
-        std::cout << resultIter;
-    }
+    twoBSouth(mapForSearchingSouth,result,nextBrick);
+    twoBNorth(mapForSearchingNorth, result, nextBrick);
+    outputResult(result);
     return 0;
 }
 
-void fileToList(std::string& filePath, std::list<std::string>& bricks) {
+std::string fileToMap(std::string& filePath, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string >& mapForSearchingNorth) {
     std::ifstream testFile{ filePath };
     std::string line;
+    bool first = true;
+    std::string startBrick = "";
     if (!testFile.is_open()) { //if not open
         std::cerr << "File not open" << "\n"; //output char error
     }
     else {
-        while (std::getline(testFile, line)) {
-            //split string
+        while (std::getline(testFile, line)) {            //split string
             std::string delimiter = ",";
             std::string firstString = line.substr(0, line.find(delimiter));
             std::string secondString = line.substr(line.find(delimiter) + 1, line.back());
-            bricks.push_back(firstString);
-            bricks.push_back(secondString);
+            mapForSearchingSouth[firstString] = secondString;
+            mapForSearchingNorth[secondString] = firstString;
+            if (first == true) {
+                startBrick = firstString;
+                first = false;
+            }
         }
     }
+    return startBrick;
 }
-void listToOMap(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string > & mapForSearchingNorth) {
-    int countingListEntries = 0;
-    std::string mapValue1 = " ";
-    for (std::list<std::string>::const_iterator itToListCurrentBrick = bricks.begin(); itToListCurrentBrick != bricks.end(); ++itToListCurrentBrick) { //add list contents to map
-        if (countingListEntries % 2 == 1) {
-            std::string mapValue2 = *itToListCurrentBrick;
-            mapForSearchingSouth[mapValue1] = mapValue2;
-            mapForSearchingNorth[mapValue2] = mapValue1;
-        }
-        else {
-            mapValue1 = *itToListCurrentBrick;
-        }
-        ++countingListEntries;
-    }
-}
-void twoBSouth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::list<std::string>& result, std::string nextBrick) {
+void twoBSouth(std::map<std::string, std::string>& mapForSearchingSouth, std::list<std::string>& result, std::string nextBrick) {
     bool finishedSouth = false;
     while (!finishedSouth) {
         if (mapForSearchingSouth.find(nextBrick) != mapForSearchingSouth.end()) {
@@ -68,7 +51,7 @@ void twoBSouth(std::list<std::string>& bricks, std::map<std::string, std::string
         }
     }
 }
-void twoBNorth(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingNorth, std::list<std::string>& result, std::string nextBrick, std::string lastBrick) {
+void twoBNorth(std::map<std::string, std::string>& mapForSearchingNorth, std::list<std::string>& result, std::string nextBrick) {
     bool finishedNorth = false;
     while (!finishedNorth) {
         if (mapForSearchingNorth.find(nextBrick) != mapForSearchingNorth.end() && mapForSearchingNorth.find(nextBrick)->second == nextBrick) { //tried using string but took ages to push front
@@ -93,6 +76,11 @@ std::string checkIfInput(int argc, char* argv[]) {
     }
     return "Error invalid File";
 
+}
+void outputResult(std::list<std::string> result) {
+    for (const auto& resultIter : result) {
+        std::cout << resultIter;
+    }
 }
 
 
