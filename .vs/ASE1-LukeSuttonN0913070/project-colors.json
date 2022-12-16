@@ -50,7 +50,12 @@
       "ProjectGuid": "8e55d6ff-add3-457e-94c3-493139224599",
       "DisplayName": "Task6",
       "ColorIndex": 8
+    },
+    "66ca253b-4289-416f-a5ce-5e6f0fc1759f": {
+      "ProjectGuid": "66ca253b-4289-416f-a5ce-5e6f0fc1759f",
+      "DisplayName": "Task6Timing",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 9
+  "NextColorIndex": 10
 }

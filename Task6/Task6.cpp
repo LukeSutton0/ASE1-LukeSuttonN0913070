@@ -184,3 +184,6 @@ void copyToResult(std::list<std::pair<std::string, int>>& tapeP, std::list<std::
         tapeResult.push_back(pair.first);
     }
 }
+
+
+//
