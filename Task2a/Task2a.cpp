@@ -3,8 +3,7 @@
 
 
 int main(int argc, char* argv[]) {
-    std::string filePath = checkIfInput(argc,argv);
-    //std::string filePath = "input-pairs-3M.txt"; //if you want to use debug
+    std::string filePath = checkIfInput(argc, argv);
     if (filePath == "Error invalid File") {
         return 1;
     }
@@ -23,7 +22,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-int fileToUnMap(std::string &filePath, std::unordered_map<std::string, std::string> &bricks, std::unordered_map<std::string, std::string>&bricksBack) {
+int fileToUnMap(std::string& filePath, std::unordered_map<std::string, std::string>& bricks, std::unordered_map<std::string, std::string>& bricksBack) {
     std::ifstream testFile{ filePath };
     std::string line;
     if (!testFile.is_open()) { //if not open
@@ -39,7 +38,7 @@ int fileToUnMap(std::string &filePath, std::unordered_map<std::string, std::stri
     }
     return true;
 }
-void twoASouth(std::string startBrick, std::unordered_map<std::string, std::string>& bricks, std::unordered_map<std::string, std::string>&result) {
+void twoASouth(std::string startBrick, std::unordered_map<std::string, std::string>& bricks, std::unordered_map<std::string, std::string>& result) {
     std::string nextBrick = bricks[startBrick];
     result[startBrick] = nextBrick;
     bool finishedSouth = false;
@@ -56,7 +55,7 @@ void twoASouth(std::string startBrick, std::unordered_map<std::string, std::stri
     }
 }
 std::string twoANorth(std::string startBrick, std::unordered_map<std::string, std::string>& bricksBack, std::unordered_map<std::string, std::string>& result) {
-    std::string nextBrick = bricksBack.find(startBrick)->second; 
+    std::string nextBrick = bricksBack.find(startBrick)->second;
     bool finishedNorth = false;
     std::string lastAdded = "";
     while (!finishedNorth) {        //check north of start brick
@@ -73,12 +72,12 @@ std::string twoANorth(std::string startBrick, std::unordered_map<std::string, st
 }
 void outputResult(std::unordered_map<std::string, std::string>& bricks, std::string lastAdded) {
     std::unordered_map<std::string, std::string>::iterator resultIter = bricks.find(lastAdded);
-    for (auto resultIter : bricks) {
+    for (auto& resultIter : bricks) {
         std::cout << lastAdded << "\n"; //check line endings for linux
         lastAdded = bricks[lastAdded];
     }
 }
-std::string checkIfInput(int argc,char* argv[]) {
+std::string checkIfInput(int argc, char* argv[]) {
     try {
         if (argc != 1) { //make sure filepath entered
             std::string filePath = argv[1];
@@ -89,7 +88,7 @@ std::string checkIfInput(int argc,char* argv[]) {
         std::cerr << "Error establishing filepath";
     }
     return "Error invalid File";
-    
+
 }
 
 //code graveyard

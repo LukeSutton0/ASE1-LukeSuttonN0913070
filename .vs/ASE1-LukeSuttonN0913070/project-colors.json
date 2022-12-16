@@ -25,7 +25,37 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "7a47ceca-dcc3-487b-9c10-4e963ce3dc17": {
+      "ProjectGuid": "7a47ceca-dcc3-487b-9c10-4e963ce3dc17",
+      "DisplayName": "Task2bAttempt2",
+      "ColorIndex": 4
+    },
+    "da35fb48-9660-4d8f-a48b-20b598eabf80": {
+      "ProjectGuid": "da35fb48-9660-4d8f-a48b-20b598eabf80",
+      "DisplayName": "Task2aTiming",
+      "ColorIndex": 5
+    },
+    "7ee061da-d4b9-4e35-93ce-552b75a60a30": {
+      "ProjectGuid": "7ee061da-d4b9-4e35-93ce-552b75a60a30",
+      "DisplayName": "Task2bAttempt2Timing",
+      "ColorIndex": 6
+    },
+    "4b813eaa-5766-457f-9c0d-ce611a3bcd14": {
+      "ProjectGuid": "4b813eaa-5766-457f-9c0d-ce611a3bcd14",
+      "DisplayName": "Task2bTiming",
+      "ColorIndex": 7
+    },
+    "8e55d6ff-add3-457e-94c3-493139224599": {
+      "ProjectGuid": "8e55d6ff-add3-457e-94c3-493139224599",
+      "DisplayName": "Task6",
+      "ColorIndex": 8
+    },
+    "66ca253b-4289-416f-a5ce-5e6f0fc1759f": {
+      "ProjectGuid": "66ca253b-4289-416f-a5ce-5e6f0fc1759f",
+      "DisplayName": "Task6Timing",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 10
 }

@@ -1,7 +1,7 @@
 #include "../headers/Task2.h"
-int main(int argc, char* argv[]) {   
-    //std::string filePath = checkIfInput(argc, argv);
-    std::string filePath = "input-pairs-3M.txt";
+int main(int argc, char* argv[]) {
+    std::string filePath = checkIfInput(argc, argv);
+    //std::string filePath = "input-pairs-3M.txt";
     if (filePath == "Error invalid File") {
         return 1;
     }
@@ -10,14 +10,14 @@ int main(int argc, char* argv[]) {
     std::string startBrick = bricks.front();
     std::map<std::string, std::string> mapForSearchingSouth;
     std::map<std::string, std::string> mapForSearchingNorth;
-    listToOMap(bricks,mapForSearchingSouth,mapForSearchingNorth);
+    listToOMap(bricks, mapForSearchingSouth, mapForSearchingNorth);
     std::list<std::string> result;
     std::string nextBrick = startBrick;
     result.push_back(nextBrick);
-    twoBSouth(bricks,mapForSearchingSouth,result,nextBrick);
+    twoBSouth(bricks, mapForSearchingSouth, result, nextBrick);
     std::string lastBrick = "";
     twoBNorth(bricks, mapForSearchingNorth, result, nextBrick, lastBrick);
-    
+
     for (const auto& resultIter : result) {
         std::cout << resultIter;
     }
@@ -41,7 +41,7 @@ void fileToList(std::string& filePath, std::list<std::string>& bricks) {
         }
     }
 }
-void listToOMap(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string > & mapForSearchingNorth) {
+void listToOMap(std::list<std::string>& bricks, std::map<std::string, std::string>& mapForSearchingSouth, std::map<std::string, std::string >& mapForSearchingNorth) {
     int countingListEntries = 0;
     std::string mapValue1 = " ";
     for (std::list<std::string>::const_iterator itToListCurrentBrick = bricks.begin(); itToListCurrentBrick != bricks.end(); ++itToListCurrentBrick) { //add list contents to map
