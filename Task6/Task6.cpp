@@ -1,8 +1,8 @@
 #include "../headers/Task2.h"
 
 int main(int argc, char* argv[]) {
-    std::string filePath = "../src/20/input-pairs-20.txt";
-    //std::string filePath = checkIfInput(argc, argv);
+    //std::string filePath = "../src/20/input-pairs-20.txt"; //testing
+    std::string filePath = checkIfInput(argc, argv);
     if (filePath == "Error invalid File") {
         return 1;
     }
