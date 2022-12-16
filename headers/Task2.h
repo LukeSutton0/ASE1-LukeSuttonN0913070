@@ -9,10 +9,15 @@
 #include <map>
 #include <sstream>
 #include <chrono>
+#include <algorithm>
+#include <utility>
+#include <vector>
+#include <fstream>
+#include <string>
 
 //declare all function definitions
 
-//2
+//
 std::string checkIfInput(int argc, char* argv[]);
 
 //2a
@@ -34,4 +39,19 @@ std::string fileToMap(std::string& filePath, std::map<std::string, std::string>&
 void twoBSouth(std::map<std::string, std::string>& mapForSearchingSouth, std::list<std::string>& result, std::string nextBrick);
 void twoBNorth(std::map<std::string, std::string>& mapForSearchingNorth, std::list<std::string>& result, std::string nextBrick);
 void outputResult(std::list<std::string> result);
+
+
+//6
+int addToTape(std::string& filePath, std::list<std::pair<std::string, std::string>>& tapeA, std::list<std::pair<std::string, std::string>>& tapeB);
+void sortTapeSecond(std::list<std::pair<std::string, std::string>>& tape);
+void sortTapeSecond(std::list<std::pair<std::string, int>>& tape); //overload for int
+void sortTapeFirst(std::list<std::pair<std::string, std::string>>& tape);
+void sortTapeFirst(std::list<std::pair<std::string, int>>& tape); //overload for string int pair
+void compareAB(std::list<std::pair<std::string, std::string>>& tapeA, std::list<std::pair<std::string, std::string>>& tapeB,
+    std::list<std::pair<std::string, std::string>>& tapeC, std::list<std::pair<std::string, int>>& tapeP);
+void tapeManipulation(std::list<std::pair<std::string, std::string>>& tapeA, std::list<std::pair<std::string, std::string>>& tapeB,
+    std::list<std::pair<std::string, std::string>>& tapeC, std::list<std::pair<std::string, int>>& tapeP, std::list<std::pair<std::string, int>>& tapeF, int& d);
+void mergeTapes(std::list<std::pair<std::string, int>>& tapeP, std::list<std::pair<std::string, int>>& tapeF);//f into p preserving alphabetical ordering of first components);
+void copyToResult(std::list<std::pair<std::string, int>>& tapeP, std::list<std::string> tapeResult);
 #endif
+
